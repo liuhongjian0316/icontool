@@ -216,7 +216,7 @@ private fun FileDetailBox(file: File) {
         mutableStateOf("icon-")
     }
     val writeIconPre = remember {
-        mutableStateOf("icon-")
+        mutableStateOf("icon_")
     }
     val fontSize = remember {
         mutableStateOf("16")
@@ -400,24 +400,22 @@ private fun handlerData(
             val pattern = """\.${prefix}(.*?):before \{\s*content: "(.*?)";\s*\}""".toRegex()
             val matches = pattern.findAll(cssContent)
 
-
             for (match in matches) {
                 var iconName = match.groupValues[1].replace("-", "_")
-                iconName = iconName.replace(prefix, writeIconPre) // 替换写入前缀
                 val iconValue = CommonUtils.unicodeEscapeToHtmlEntity(match.groupValues[2])
 //                println("$iconName: $iconValue")
                 // 写入android string 资源
-                strResourceResult += "<string name=\"${iconName}\" translatable=\"false\">${iconValue}</string>\n"
+                strResourceResult += "<string name=\"${writeIconPre}${iconName}\" translatable=\"false\">${iconValue}</string>\n"
                 // 写入android icon组件函数
                 functionResult += "@Composable\n" +
-                        "fun ${innerFunctionIconPre}${iconName}(\n" +
+                        "fun ${innerFunctionIconPre}_${iconName}(\n" +
                         "    modifier: Modifier = Modifier,\n" +
                         "    textStyle: TextStyle = TextStyle(),\n" +
                         "    fontSize: TextUnit = $fontSize.sp,\n" +
                         "    color: Color = getCurrentColors().onBackground,\n" +
                         ") {\n" +
                         "    ${innerFunction}(\n" +
-                        "        R.string.${iconName},\n" +
+                        "        R.string.${writeIconPre}${iconName},\n" +
                         "        textStyle = textStyle,\n" +
                         "        modifier = modifier,\n" +
                         "        fontSize = fontSize,\n" +
@@ -446,6 +444,7 @@ private fun handlerData(
             onFail("生成失败！！！！")
         }
     } catch (e: Exception) {
+        e.printStackTrace()
         onFail(e.message.toString())
     }
 }

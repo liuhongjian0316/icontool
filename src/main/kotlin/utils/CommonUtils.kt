@@ -15,11 +15,12 @@ object CommonUtils {
 
     // 转unicode
     fun unicodeEscapeToHtmlEntity(escape: String): String {
-        if (!escape.startsWith("\\e")) {
-            throw IllegalArgumentException("Invalid escape format!")
+        try {
+            val hexValue = escape.drop(1)
+            return "&#$hexValue;"
+        } catch (e: Exception) {
+            return ""
         }
-        val hexValue = escape.drop(2)
-        return "&#x$hexValue;"
     }
 
     // 复制文件到剪切板
