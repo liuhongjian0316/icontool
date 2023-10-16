@@ -16,9 +16,10 @@ object CommonUtils {
     // 转unicode
     fun unicodeEscapeToHtmlEntity(escape: String): String {
         try {
+            println(escape)
             val hexValue = escape.drop(1)
-            return "&#$hexValue;"
-        } catch (e: Exception) {
+            return "&#x$hexValue;"
+        }catch (e:Exception) {
             return ""
         }
     }
