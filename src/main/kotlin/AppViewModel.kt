@@ -14,7 +14,7 @@ class AppViewModel {
     private val dataStore: DataStore<Preferences> = getDataStore()
 
     // 选择的文件
-    private val _fileList = MutableStateFlow(mutableStateListOf<File>(File("asd"), File("asd2")))
+    private val _fileList = MutableStateFlow(mutableStateListOf<File>())
     val fileList: Flow<List<File>>
         get() = _fileList
 

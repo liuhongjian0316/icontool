@@ -37,32 +37,6 @@ import utils.DataStoreUtils.saveSyncStringData
 import java.io.File
 import java.io.IOException
 
-/**
- * 版权：Zhujiang 个人版权
- *
- * @author zhujiang
- * 创建日期：2022/12/07
- *
- * 异步获取数据
- * [getData] [readBooleanFlow] [readFloatFlow] [readIntFlow] [readLongFlow] [readStringFlow]
- * 同步获取数据
- * [getSyncData] [readBooleanData] [readFloatData] [readIntData] [readLongData] [readStringData]
- *
- * 异步写入数据
- * [putData] [saveBooleanData] [saveFloatData] [saveIntData] [saveLongData] [saveStringData]
- * 同步写入数据
- * [putSyncData] [saveSyncBooleanData] [saveSyncFloatData] [saveSyncIntData] [saveSyncLongData] [saveSyncStringData]
- *
- * 异步清除数据
- * [clear]
- * 同步清除数据
- * [clearSync]
- *
- * 描述：DataStore 工具类
- *
- */
-
-
 object DataStoreUtils {
 
     /**

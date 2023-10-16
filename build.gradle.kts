@@ -23,13 +23,18 @@ dependencies {
     implementation("androidx.datastore:datastore-preferences-core:1.1.0-dev01")
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
 compose.desktop {
     application {
         mainClass = "MainKt"
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb, TargetFormat.Exe)
-            packageName = "icontool"
+            packageName = "iconTool"
             packageVersion = "1.0.0"
             description = "导出Android 图标资源"
             vendor = "aijiu"
@@ -41,20 +46,20 @@ compose.desktop {
                 iconFile.set(project.file("launcher/icon.png"))
             }
             macOS {
-                packageVersion = "1.1.0"
-                dmgPackageVersion = "1.1.0"
-                pkgPackageVersion = "1.1.0"
+                packageVersion = "1.0.0"
+                dmgPackageVersion = "1.0.0"
+                pkgPackageVersion = "1.0.0"
                 dockName = "iconTool"
 
-                packageBuildVersion = "1.1.0"
-                dmgPackageBuildVersion = "1.1.0"
-                pkgPackageBuildVersion = "1.1.0"
+                packageBuildVersion = "1.0.0"
+                dmgPackageBuildVersion = "1.0.0"
+                pkgPackageBuildVersion = "1.0.0"
                 iconFile.set(project.file("launcher/icon.icns"))
             }
             windows {
-                packageVersion = "1.2.0"
-                msiPackageVersion = "1.2.0"
-                exePackageVersion = "1.2.0"
+                packageVersion = "1.0.0"
+                msiPackageVersion = "1.0.0"
+                exePackageVersion = "1.0.0"
                 iconFile.set(project.file("launcher/icon.ico"))
             }
         }
